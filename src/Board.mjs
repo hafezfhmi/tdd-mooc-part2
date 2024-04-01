@@ -3,11 +3,13 @@ export class Board {
   height;
   block;
   dropLevel;
+  falling;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
     this.dropLevel = 0;
+    this.falling = true;
   }
 
   drop(block) {
@@ -22,7 +24,7 @@ export class Board {
   }
 
   hasFalling() {
-    return true;
+    return this.falling;
   }
 
   toString() {
