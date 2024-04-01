@@ -46,7 +46,7 @@ export class Board {
         if (this.block && row === this.dropLevel && col === 1) {
           result += this.block;
         } else {
-          result += ".";
+          result += this.memory[row][col];
         }
       }
       result += "\n";
