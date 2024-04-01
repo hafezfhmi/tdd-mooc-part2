@@ -2,7 +2,7 @@ export class Board {
   width;
   height;
   block;
-  dropLevel;
+  fallingRow;
   falling;
   memory;
 
@@ -17,7 +17,7 @@ export class Board {
   }
 
   drop(block) {
-    this.dropLevel = 0;
+    this.fallingRow = 0;
     this.falling = true;
 
     if (this.block) {
@@ -27,10 +27,10 @@ export class Board {
   }
 
   tick() {
-    if (this.dropLevel === this.height - 1) {
+    if (this.fallingRow === this.height - 1) {
       this.falling = false;
     } else {
-      this.dropLevel++;
+      this.fallingRow++;
     }
   }
 
@@ -43,7 +43,7 @@ export class Board {
 
     for (let row = 0; row < this.height; row++) {
       for (let col = 0; col < this.width; col++) {
-        if (this.block && row === this.dropLevel && col === 1) {
+        if (this.block && row === this.fallingRow && col === 1) {
           result += this.block;
         } else {
           result += this.memory[row][col];
