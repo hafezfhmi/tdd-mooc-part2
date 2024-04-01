@@ -8,11 +8,12 @@ export class Board {
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.dropLevel = 0;
-    this.falling = true;
   }
 
   drop(block) {
+    this.dropLevel = 0;
+    this.falling = true;
+
     if (this.block) {
       throw "already falling";
     }
