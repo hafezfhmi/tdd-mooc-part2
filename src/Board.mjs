@@ -3,7 +3,6 @@ export class Board {
   height;
   block;
   fallingRow;
-  falling;
   memory;
 
   constructor(width, height) {
@@ -17,26 +16,25 @@ export class Board {
   }
 
   drop(block) {
-    if (this.block && this.falling) {
+    if (this.block) {
       throw "already falling";
     }
 
     this.fallingRow = 0;
-    this.falling = true;
     this.block = block;
   }
 
   tick() {
     if (this.fallingRow === this.height - 1 || this.memory[this.fallingRow + 1][1] !== ".") {
-      this.falling = false;
       this.memory[this.fallingRow][1] = this.block;
+      this.block = null;
     } else {
       this.fallingRow++;
     }
   }
 
   hasFalling() {
-    return this.falling;
+    return !!this.block;
   }
 
   toString() {
