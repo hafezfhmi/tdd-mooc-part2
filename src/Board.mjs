@@ -27,7 +27,7 @@ export class Board {
   }
 
   tick() {
-    if (this.fallingRow === this.height - 1) {
+    if (this.fallingRow === this.height - 1 || this.memory[this.fallingRow + 1][1] !== ".") {
       this.falling = false;
       this.memory[this.fallingRow][1] = this.block;
     } else {
