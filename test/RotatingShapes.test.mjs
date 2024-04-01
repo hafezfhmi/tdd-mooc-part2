@@ -9,6 +9,12 @@ describe("Rotating 3x3 shape", () => {
      GHI`
   );
 
+  const shape2 = RotatingShape.fromString(
+    `123
+     456
+     789`
+  );
+
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
       `ABC
@@ -22,6 +28,12 @@ describe("Rotating 3x3 shape", () => {
       `GDA
        HEB
        IFC`
+    );
+
+    expect(shape2.rotateRight().toString()).to.equalShape(
+      `741
+       852
+       963`
     );
   });
 
