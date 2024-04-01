@@ -21,6 +21,10 @@ export class Board {
     this.dropLevel++;
   }
 
+  hasFalling() {
+    return true;
+  }
+
   toString() {
     let result = "";
 
