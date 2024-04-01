@@ -17,18 +17,19 @@ export class Board {
   }
 
   drop(block) {
-    this.fallingRow = 0;
-    this.falling = true;
-
-    if (this.block) {
+    if (this.block && this.falling) {
       throw "already falling";
     }
+
+    this.fallingRow = 0;
+    this.falling = true;
     this.block = block;
   }
 
   tick() {
     if (this.fallingRow === this.height - 1) {
       this.falling = false;
+      this.memory[this.fallingRow][1] = this.block;
     } else {
       this.fallingRow++;
     }
