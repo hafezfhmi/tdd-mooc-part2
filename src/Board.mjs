@@ -4,10 +4,16 @@ export class Board {
   block;
   dropLevel;
   falling;
+  memory;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
+    this.memory = new Array(height);
+
+    for (let row = 0; row < this.height; row++) {
+      this.memory[row] = new Array(width).fill(".");
+    }
   }
 
   drop(block) {
