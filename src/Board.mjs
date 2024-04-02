@@ -4,11 +4,13 @@ export class Board {
   block;
   fallingRow;
   memory;
+  middle;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
     this.memory = new Array(height);
+    this.middle = Math.floor(width / 2);
 
     for (let row = 0; row < this.height; row++) {
       this.memory[row] = new Array(width).fill(".");
@@ -25,8 +27,8 @@ export class Board {
   }
 
   tick() {
-    if (this.fallingRow === this.height - 1 || this.memory[this.fallingRow + 1][1] !== ".") {
-      this.memory[this.fallingRow][1] = this.block;
+    if (this.fallingRow === this.height - 1 || this.memory[this.fallingRow + 1][this.middle] !== ".") {
+      this.memory[this.fallingRow][this.middle] = this.block;
       this.block = null;
     } else {
       this.fallingRow++;
@@ -42,7 +44,7 @@ export class Board {
 
     for (let row = 0; row < this.height; row++) {
       for (let col = 0; col < this.width; col++) {
-        if (this.block && row === this.fallingRow && col === 1) {
+        if (this.block && row === this.fallingRow && col === this.middle) {
           result += this.block;
         } else {
           result += this.memory[row][col];
