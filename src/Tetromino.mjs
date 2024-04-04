@@ -53,6 +53,10 @@ export class Tetromino {
   }
 
   rotateLeft() {
-    return new Tetromino(this.shape.rotateLeft().toString());
+    return new Tetromino(
+      null,
+      this.currentOrientation === 0 ? this.orientations.length - 1 : this.currentOrientation - 1,
+      this.orientations
+    );
   }
 }
