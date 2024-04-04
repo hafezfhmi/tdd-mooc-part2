@@ -1,6 +1,7 @@
 import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino {
+  // 1. pass currentOrientation and orientations for possible orientations.
   static T_SHAPE = new Tetromino(
     `.T.
      TTT
@@ -20,14 +21,19 @@ export class Tetromino {
 
   constructor(shape) {
     this.shape = RotatingShape.fromString(shape);
+    // 2. if first initialized, create a new RotatingShape object to be able to access its method
+    // 3. get all possible orientations and set it as class property. Push the orientations to orientations props and must be of type RotatingShape
+    // 6. if initialized later, there's no need to get the possible orientations, just accept the previous array. check if its type array or we can pass null as the shape because we no longer need to set shape props.
   }
 
   toString() {
     return this.shape.toString();
+    // 4. use currentOrientation and orientations to get current shape.
   }
 
   rotateRight() {
     return new Tetromino(this.shape.rotateRight().toString());
+    //5. use currentOrientation and orientations. Make a new Tetromino object (immutable). and use conditional to check if it exceeds the possible orientations
   }
 
   rotateLeft() {
