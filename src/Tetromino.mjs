@@ -22,12 +22,20 @@ export class Tetromino {
   );
 
   shape;
+  currentOrientation;
   orientations;
 
   constructor(initialShape, currentOrientation, orientations) {
     // 2. if first initialized, create a new RotatingShape object to be able to access its method
     this.shape = RotatingShape.fromString(initialShape);
+    this.currentOrientation = currentOrientation;
     // 3. get all possible orientations and set it as class property. Push the orientations to orientations props and must be of type RotatingShape
+    this.orientations = [
+      this.shape,
+      this.shape.rotateRight(),
+      this.shape.rotateRight().rotateRight(),
+      this.shape.rotateRight().rotateRight().rotateRight(),
+    ].slice(0, orientations);
     // 6. if initialized later, there's no need to get the possible orientations, just accept the previous array. check if its type array or we can pass null as the shape because we no longer need to set shape props.
   }
 
